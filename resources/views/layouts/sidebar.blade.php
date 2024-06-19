@@ -27,6 +27,12 @@
                 <span class="text-uppercase">User Interface</span>
             </li>
             <li>
+                <a href="{{ url('users') }}" class="link">
+                    <i class="ti-user"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+            <li>
                 <a href="#" class="main-menu has-dropdown">
                     <i class="ti-desktop"></i>
                     <span>UI Elements</span>

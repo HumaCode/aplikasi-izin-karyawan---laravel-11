@@ -3,6 +3,7 @@
 @import 'style.css';
 @import 'dark.css';
 @import './themify-icons/themify-icons.css';
+@import 'perfect-scrollbar/css/perfect-scrollbar.css';
 
 /* @tailwind base;
 @tailwind components;
