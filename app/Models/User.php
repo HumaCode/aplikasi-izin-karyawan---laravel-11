@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -55,5 +56,15 @@ class User extends Authenticatable
     public function karyawan(): HasOne
     {
         return $this->hasOne(Karyawan::class, 'user_id', 'id');
+    }
+
+    /**
+     * The atasan that belong to the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function atasan(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'atasan_user', 'user_id', 'atasan_id')->withPivot('level');
     }
 }

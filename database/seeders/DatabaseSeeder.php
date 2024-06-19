@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Divisi;
-use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -16,23 +14,8 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        $it = Divisi::create([
-            'nama'      => 'it',
-            'active'    => 1,
-        ]);
-
-        $user = User::factory()->create([
-            'nama'  => 'Staff IT',
-            'email' => 'staff_it@example.com',
-        ]);
-
-        $user->karyawan()->create([
-            'nama'              => $user->nama,
-            'divisi_id'         => $it->id,
-            'nama_divisi'       => $it->nama,
-            'status_karyawan'   => 'tetap',
-            'tanggal_masuk'     => now(),
-            'jenis_kelamin'     => 'L',
+        $this->call([
+            UserKaryawanDivisiSeeder::class,
         ]);
     }
 }
