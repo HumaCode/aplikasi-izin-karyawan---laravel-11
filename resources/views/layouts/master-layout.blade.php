@@ -17,7 +17,7 @@
     @stack('css')
 
 
-    @vite(['resources/js/app.js', 'resources/css/app.css'])
+    @vite(['resources/js/vendor/jquery.js', 'resources/js/app.js', 'resources/css/app.css'])
 
     @stack('jsModule')
 </head>
@@ -40,6 +40,11 @@
             <div class="content-wrapper">
                 {{ $slot }}
             </div>
+        </div>
+
+        <div class="modal fade" id="modalAction" tabindex="-1" aria-labelledby="modalActionLabel" aria-hidden="true">
+
+
         </div>
 
         {{-- setting --}}
