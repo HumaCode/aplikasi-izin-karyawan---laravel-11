@@ -40,6 +40,14 @@ class UserDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
+            ->parameters([
+                'delay' => 1000,
+                'responsive' => [
+                    'details' => [
+                        'display' => '$.fn.dataTable.Responsive.display.childRowImmediate'
+                    ]
+                ],
+            ])
             ->setTableId('user-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
