@@ -13,6 +13,7 @@ export default defineConfig({
             input: [
                 ...files,
                 'resources/css/app.css',
+                'resources/css/login.css',
                 'resources/js/app.js',
             ],
             refresh: true,
