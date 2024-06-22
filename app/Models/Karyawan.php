@@ -12,6 +12,8 @@ class Karyawan extends Model
 
     protected $table = 'karyawan';
 
+    protected $guarded = [];
+
     /**
      * Get the divisi that owns the Karyawan
      *

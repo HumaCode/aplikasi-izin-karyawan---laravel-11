@@ -19,6 +19,16 @@ class UserKaryawanDivisiSeeder extends Seeder
             'active'    => 1,
         ]);
 
+        $finance = Divisi::create([
+            'nama'      => 'finance',
+            'active'    => 1,
+        ]);
+
+        $hrd = Divisi::create([
+            'nama'      => 'hrd',
+            'active'    => 1,
+        ]);
+
         $staff_it = User::factory()->create([
             'nama'  => 'Staff IT',
             'email' => 'staff_it@example.com',
@@ -37,6 +47,24 @@ class UserKaryawanDivisiSeeder extends Seeder
         $staff_it->atasan()->attach([
             $supervisor_it->id      => ['level' => 1],
             $manager_it->id         => ['level' => 2],
+        ]);
+
+        $supervisor_it->karyawan()->create([
+            'nama'              => $supervisor_it->nama,
+            'divisi_id'         => $it->id,
+            'nama_divisi'       => $it->nama,
+            'status_karyawan'   => 'tetap',
+            'tanggal_masuk'     => now(),
+            'jenis_kelamin'     => 'L',
+        ]);
+
+        $manager_it->karyawan()->create([
+            'nama'              => $manager_it->nama,
+            'divisi_id'         => $it->id,
+            'nama_divisi'       => $it->nama,
+            'status_karyawan'   => 'tetap',
+            'tanggal_masuk'     => now(),
+            'jenis_kelamin'     => 'L',
         ]);
 
         $staff_it->karyawan()->create([

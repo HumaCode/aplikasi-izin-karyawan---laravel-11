@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\DataTables\UserDataTable;
 use App\Http\Requests\UserRequest;
+use App\Models\Divisi;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -23,8 +25,10 @@ class UserController extends Controller
     public function create()
     {
         return view('pages.user-form', [
-            'action' => route('users.store'),
-            'data' => new User()
+            'action'        => route('users.store'),
+            'data'          => new User(),
+            'jenisKelamin'  => ['Laki-laki' => 'L', 'Perempuan' => 'P'],
+            'divisi'        => Divisi::all(),
         ]);
     }
 
@@ -33,15 +37,32 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
+        DB::beginTransaction();
+
         try {
             $user = new User($request->validated());
             $user->password = bcrypt($request->password);
             $user->save();
 
+            $divisi = Divisi::findOrFail($request->divisi);
+            $user->karyawan()->create([
+                'nama'              => $user->nama,
+                'divisi_id'         => $request->divisi,
+                'nama_divisi'       => $divisi->nama,
+                'jenis_kelamin'     => $request->jenis_kelamin,
+                'status_karyawan'   => $request->status_karyawan,
+                'tanggal_masuk'     => now(),
+            ]);
+
+            DB::commit();
+
             return response()->json([
                 'status' => 'success'
             ]);
         } catch (\Throwable $th) {
+
+            DB::rollBack();
+
             return response()->json([
                 'status'    => 'error',
                 'message'   => $th->getMessage()

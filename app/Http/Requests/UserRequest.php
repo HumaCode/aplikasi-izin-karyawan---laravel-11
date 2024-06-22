@@ -16,11 +16,14 @@ class UserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama'  => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique('users')->ignore($this)],
-            'password' => [Rule::requiredIf(function () {
+            'nama'              => ['required', 'string', 'max:255'],
+            'email'             => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique('users')->ignore($this)],
+            'password'          => [Rule::requiredIf(function () {
                 return request()->routeIs('users.store');
-            }), 'confirmed']
+            }), 'confirmed'],
+            'divisi'            => ['required'],
+            'jenis_kelamin'     => ['required'],
+            'status_karyawan'   => ['required'],
         ];
     }
 }
