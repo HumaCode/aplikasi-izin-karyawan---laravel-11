@@ -70,11 +70,17 @@ export class AjaxAction extends AjaxOption{
 }
 
 export class HandleFormSubmit extends AjaxOption{
+    dataTableId = null
     constructor(formId = '#formAction') {
         super()
         this.formId         = $(formId)
         this.button         = this.formId.find('button[type="submit"]')
         this.buttonLabel    = this.button.html()
+    }
+
+    reloadDatatable(id) {
+        this.dataTableId = id
+        return this
     }
 
     init() {
@@ -101,6 +107,10 @@ export class HandleFormSubmit extends AjaxOption{
 
                     showToast(res?.message)
                     _this.successCb && _this.successCb(res)
+
+                    if (_this.dataTableId) {
+                        window.LaravelDataTables[_this.dataTableId].ajax.reload(null, false)
+                    }
                 },
                 error: err => {
                     if (_this.runDefaultErrorCb) {

@@ -16,6 +16,7 @@ $('.main-content').on('click', '.action', function(e) {
         .onSuccess(res => {
 
         })
+        .reloadDatatable('user-table')
         .init()
     })
     .execute()
