@@ -50,11 +50,14 @@ export function confirmation(cb, configs = {})
 }
 
 export function initDatepicker(selector = '.date', options = {}) {
+
     const date = $(selector).datepicker({
                     autoclose: true,
                     todayHighlight: false,
+                    assumeNearbyYear: true,
+                    defaultViewDate:true,
                     ...options
-                })
+                });
 
     return date
 }

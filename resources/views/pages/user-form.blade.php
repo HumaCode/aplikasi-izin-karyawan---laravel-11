@@ -47,7 +47,7 @@
 
         <div class="col-md-6">
             <x-forms.datepicker label="Tanggal Masuk" name="tanggal_masuk"
-                value="{{ $data->karyawan?->tanggal_masuk }}" />
+                value="{{ (new DateTime($data->karyawan?->tanggal_masuk))->format('d-m-Y') }}" />
         </div>
 
         <hr class="my-3" />
