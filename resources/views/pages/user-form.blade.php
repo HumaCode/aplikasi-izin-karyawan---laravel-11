@@ -54,12 +54,12 @@
 
         <div class="col 12">
             <button type="button" class="btn btn-info add-atasan mb-3"
-                data-action="{{ route('users.list-atasan') }}">Tambah
+                data-action="{{ route('users.list-atasan') . '?except=' . $data->id }}">Tambah
                 Atasan</button>
 
 
             <table class="table">
-                <thead>
+                <thead class="text-center">
                     <th>Nama</th>
                     <th>Email</th>
                     <th>Level</th>
@@ -69,7 +69,12 @@
 
                     @foreach ($data->atasan as $item)
                         <tr>
-                            <td>{{ $item->nama }}</td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-sm btn-delete"><i
+                                        class="ti ti-trash"></i></button>
+                                &nbsp;
+                                {{ $item->nama }}
+                            </td>
                             <td>{{ $item->email }}</td>
                             <td>
                                 <input type="text" class="form-control" name="atasan[{{ $item->id }}]"

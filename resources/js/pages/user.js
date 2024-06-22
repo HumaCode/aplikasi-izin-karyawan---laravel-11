@@ -1,6 +1,6 @@
 import  $ from 'jquery'
 import '../vendor/datatable'
-import { AjaxAction, HandleFormSubmit, initDatepicker } from '../lib/utils'
+import { AjaxAction, HandleFormSubmit, confirmation, initDatepicker } from '../lib/utils'
 
 
 $('.main-content').on('click', '.action', function(e) {
@@ -43,7 +43,18 @@ $('.main-content').on('click', '.action', function(e) {
             .execute();
         });
 
-        (new HandleFormSubmit())
+        // tombol confirm delete
+        $('.btn-delete').on('click', function() {
+            confirmation(() =>{
+                $(this).parents('tr').remove()
+            }, 
+            {
+                title: 'Yakin akan menghapus data ini.?' ,
+                text: 'Data yang dihapus tidak dapat dikembalikan lagi'
+            })
+        });
+
+        const handle = (new HandleFormSubmit())
             .onSuccess(res => {
 
             })

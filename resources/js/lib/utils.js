@@ -3,8 +3,51 @@ import iziToast from 'izitoast'
 import 'izitoast/dist/css/izitoast.min.css'
 import 'bootstrap-datepicker'
 import 'bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css'
+import Swal from 'sweetalert2'
+// import 'sweetalert2/src/sweetalert2.scss'
 
 const modalEl = $('#modalAction')
+
+export function confirmation(cb, configs = {})
+{
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger",
+            confirmButton: 'btn btn-success mx-2', 
+            cancelButton: 'btn btn-danger mx-2'
+        },
+        buttonsStyling: false
+    });
+    swalWithBootstrapButtons.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Ya, Hapus saja!",
+        cancelButtonText: "Tidak, Batalkan!",
+        reverseButtons: true,
+        ...configs
+    }).then((result) => {
+        if (result.isConfirmed) {
+            if (cb && cb(result)) {
+            }
+            swalWithBootstrapButtons.fire({
+                title: "Berhasil",
+                text: "Data berhasil dihapus.",
+                icon: "success"
+            });
+        } else if (
+          /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+        ) {
+            swalWithBootstrapButtons.fire({
+            title: "Hapus Dibatalkan",
+            text: "Datanya Gak jadi di hapus boss :)",
+            icon: "error"
+        });
+    }});
+}
 
 export function initDatepicker(selector = '.date', options = {}) {
     const date = $(selector).datepicker({
