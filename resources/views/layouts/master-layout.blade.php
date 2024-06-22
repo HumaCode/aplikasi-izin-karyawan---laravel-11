@@ -42,9 +42,12 @@
             </div>
         </div>
 
-        <div class="modal fade" id="modalAction" tabindex="-1" aria-labelledby="modalActionLabel" aria-hidden="true">
+        {{-- modal 1 --}}
+        <div class="modal fade" id="modalAction" aria-labelledby="modalActionLabel" aria-hidden="true">
+        </div>
 
-
+        {{-- modal 2 --}}
+        <div class="modal fade" id="modalSearch" aria-labelledby="modalSearchLabel" aria-hidden="true">
         </div>
 
         {{-- setting --}}

@@ -15,6 +15,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
+    Route::get('users/atasan', [UserController::class, 'listAtasan'])->name('users.list-atasan');
     Route::resource('/users', UserController::class);
 });
 

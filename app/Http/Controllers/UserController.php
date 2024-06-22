@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\ListAtasanDataTable;
 use App\DataTables\UserDataTable;
 use App\Http\Requests\UserRequest;
 use App\Models\Divisi;
@@ -18,6 +19,11 @@ class UserController extends Controller
     public function index(UserDataTable $userDataTable)
     {
         return $userDataTable->render('pages.user');
+    }
+
+    public function listAtasan(ListAtasanDataTable $listAtasanDataTable)
+    {
+        return $listAtasanDataTable->render('pages.user-list-atasan');
     }
 
     /**

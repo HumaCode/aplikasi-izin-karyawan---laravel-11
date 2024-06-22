@@ -50,5 +50,17 @@
                 value="{{ $data->karyawan?->tanggal_masuk }}" />
         </div>
 
+        <hr class="my-3" />
+
+        <div class="col 12">
+            <button type="button" class="btn btn-info add-atasan" data-action="{{ route('users.list-atasan') }}">Tambah
+                Atasan</button>
+
+
+            <table>
+
+            </table>
+        </div>
+
     </div>
 </x-modal>
