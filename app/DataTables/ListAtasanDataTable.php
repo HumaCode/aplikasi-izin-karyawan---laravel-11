@@ -26,6 +26,7 @@ class ListAtasanDataTable extends DataTable
             ->setRowAttr([
                 'data-id'       => fn ($row) => $row->id,
                 'data-nama'     => fn ($row) => $row->nama,
+                'data-email'    => fn ($row) => $row->email,
             ])
             ->addIndexColumn();
     }

@@ -32,7 +32,7 @@ class UserDataTable extends DataTable
      */
     public function query(User $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->with('karyawan')->newQuery();
     }
 
     /**
@@ -42,7 +42,7 @@ class UserDataTable extends DataTable
     {
         return $this->builder()
             ->parameters([
-                'delay' => 1000,
+                'searchDelay' => 1000,
                 'responsive' => [
                     'details' => [
                         'display' => '$.fn.dataTable.Responsive.display.childRowImmediate'
@@ -74,6 +74,7 @@ class UserDataTable extends DataTable
             Column::make('DT_RowIndex')->title('#')->orderable(false)->searchable(false),
             Column::make('id')->hidden(),
             Column::make('nama'),
+            Column::make('karyawan.nama_divisi')->name('karyawan.nama_divisi')->title('Divisi'),
             Column::make('email'),
             Column::make('created_at'),
             Column::make('updated_at'),

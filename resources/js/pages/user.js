@@ -26,8 +26,17 @@ $('.main-content').on('click', '.action', function(e) {
                 // saat tabel atasan di klik
                 $('#listatasan-table').on('click', 'tr', function() {
                     // console.log(this);
-                    const atasan = `div`
                     modalEl.modal('hide')
+
+                    const atasan = `<tr>
+                                        <td>${this.dataset.nama}</td>
+                                        <td>${this.dataset.email}</td>
+                                        <td>
+                                            <input class="form-control" placeholder="Level Atasan" name="atasan[${this.dataset.id}]">
+                                        </td>
+                                    </tr>`;
+
+                    $('#listAtasan').prepend(atasan);
                 });
 
             }, false)

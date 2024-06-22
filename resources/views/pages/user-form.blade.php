@@ -57,8 +57,16 @@
                 Atasan</button>
 
 
-            <table>
+            <table class="table">
+                <thead>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Level</th>
+                </thead>
 
+                <tbody id="listAtasan">
+
+                </tbody>
             </table>
         </div>
 

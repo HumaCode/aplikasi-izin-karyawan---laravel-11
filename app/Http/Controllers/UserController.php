@@ -47,10 +47,20 @@ class UserController extends Controller
         DB::beginTransaction();
 
         try {
+            // user
             $user = new User($request->validated());
             $user->password = bcrypt($request->password);
             $user->save();
 
+            // atasan
+            foreach ($request->atasan as $key => $value) {
+                $atasan[$key] = ['level' => $value];
+            }
+            if (isset($atasan)) {
+                $user->atasan()->attach($atasan);
+            }
+
+            // divisi
             $divisi = Divisi::findOrFail($request->divisi);
             $user->karyawan()->create([
                 'nama'              => $user->nama,
