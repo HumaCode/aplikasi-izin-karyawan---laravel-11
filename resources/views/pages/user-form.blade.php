@@ -45,5 +45,10 @@
             </x-forms.select>
         </div>
 
+        <div class="col-md-6">
+            <x-forms.datepicker label="Tanggal Masuk" name="tanggal_masuk"
+                value="{{ $data->karyawan?->tanggal_masuk }}" />
+        </div>
+
     </div>
 </x-modal>

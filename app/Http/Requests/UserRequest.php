@@ -24,6 +24,7 @@ class UserRequest extends FormRequest
             'divisi'            => ['required'],
             'jenis_kelamin'     => ['required'],
             'status_karyawan'   => ['required'],
+            'tanggal_masuk'     => ['required'],
         ];
     }
 }

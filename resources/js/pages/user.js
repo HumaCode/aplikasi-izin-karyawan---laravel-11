@@ -1,6 +1,6 @@
 import  $ from 'jquery'
 import '../vendor/datatable'
-import { AjaxAction, HandleFormSubmit } from '../lib/utils'
+import { AjaxAction, HandleFormSubmit, initDatepicker } from '../lib/utils'
 
 
 $('.main-content').on('click', '.action', function(e) {
@@ -12,12 +12,13 @@ $('.main-content').on('click', '.action', function(e) {
     (new AjaxAction(this))
     .onSuccess(function(res) {
 
-    (new HandleFormSubmit())
-        .onSuccess(res => {
+        initDatepicker();
+        (new HandleFormSubmit())
+            .onSuccess(res => {
 
-        })
-        .reloadDatatable('user-table')
-        .init()
+            })
+            .reloadDatatable('user-table')
+            .init()
     })
     .execute()
 
