@@ -171,6 +171,11 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return response()->json([
+            'status'    => 'success',
+            'message'   => 'Berhasil Menghapus Data'
+        ], 201);
     }
 }

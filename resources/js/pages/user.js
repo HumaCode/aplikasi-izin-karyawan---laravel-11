@@ -1,7 +1,17 @@
 import  $ from 'jquery'
 import '../vendor/datatable'
-import { AjaxAction, HandleFormSubmit, confirmation, initDatepicker } from '../lib/utils'
+import { AjaxAction, HandleFormSubmit, confirmation, initDatepicker, reloadDatatable, showToast } from '../lib/utils'
 
+
+$('.main-content').on('click', '.action-delete', function(e) {
+    confirmation(res => {
+        (new AjaxAction(this))
+        .onSuccess(res => {
+            showToast(res.status, res.message)
+            reloadDatatable('user-table')
+        }, false).execute();
+    })
+});
 
 $('.main-content').on('click', '.action', function(e) {
 

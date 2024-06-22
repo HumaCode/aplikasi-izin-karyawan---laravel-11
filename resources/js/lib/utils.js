@@ -8,6 +8,17 @@ import Swal from 'sweetalert2'
 
 const modalEl = $('#modalAction')
 
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr('content')
+    }
+})
+
+export function reloadDatatable(id) {
+    window.LaravelDataTables[id]?.ajax.reload(null, false);
+}
+
 export function confirmation(cb, configs = {})
 {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -100,6 +111,7 @@ export class AjaxAction extends AjaxOption{
     execute() {
         $.ajax({
             url: this.el.data('action'),
+            method: this.el.data('method') ?? 'get',
             beforeSend: () => {
                 this.el.attr('disabled', true)
                 this.el.html('Loading...')
