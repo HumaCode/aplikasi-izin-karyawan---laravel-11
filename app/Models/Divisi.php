@@ -11,6 +11,7 @@ class Divisi extends Model
     use HasFactory;
 
     protected $table = 'divisi';
+    protected $guarded = [];
 
 
     /**
@@ -21,5 +22,10 @@ class Divisi extends Model
     public function karyawan(): HasMany
     {
         return $this->hasMany(Karyawan::class, 'divisi_id', 'id');
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
     }
 }

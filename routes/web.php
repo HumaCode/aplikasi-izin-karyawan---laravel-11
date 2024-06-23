@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DivisiController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('users/atasan', [UserController::class, 'listAtasan'])->name('users.list-atasan');
     Route::resource('/users', UserController::class);
+
+    // divisi
+    Route::resource('/divisi', DivisiController::class);
 });
 
 Route::middleware('auth')->group(function () {

@@ -31,8 +31,8 @@ export function confirmation(cb, configs = {})
         buttonsStyling: false
     });
     swalWithBootstrapButtons.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
+        title: "Yakin?",
+        text: "Kamu akan menghapus data ini!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Ya, Hapus saja!",

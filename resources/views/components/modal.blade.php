@@ -1,6 +1,6 @@
 @props(['title' => 'Form', 'size' => 'lg', 'action' => null, 'method' => 'post', 'id' => 'formAction'])
 
-<div class="modal-dialog modal-{{ $size }} modal-dialog-centered">
+<div class="modal-dialog modal-{{ $size }}">
 
     @if ($action)
         <form id="{{ $id }}" action="{{ $action }}" method="{{ $method }}">
