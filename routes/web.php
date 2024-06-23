@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CutiTahunanController;
 use App\Http\Controllers\DivisiController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -21,6 +22,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // divisi
     Route::resource('/divisi', DivisiController::class);
+
+    // cuti tahunan
+    Route::resource('/cuti-tahunan', CutiTahunanController::class);
 });
 
 Route::middleware('auth')->group(function () {
