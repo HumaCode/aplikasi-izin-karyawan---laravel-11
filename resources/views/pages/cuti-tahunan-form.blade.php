@@ -7,7 +7,7 @@
     <div class="row">
 
         <div class="col-md-6">
-            <x-forms.input label="Nama Divisi" name="nama" value="{{ $data->nama }}" />
+            <x-forms.input label="Total" name="total" value="{{ $data->total }}" />
         </div>
 
         <div class="col-md-6">
@@ -15,9 +15,9 @@
         </div>
 
         <div class="col-md-6">
-            <input type="hidden" name="user_id" />
+            <input type="hidden" name="user_id" value="{{ $data->user_id }}" />
             <x-forms.input readonly id="user_name" data-action="{{ route('users.list-atasan') }}" label="User Name"
-                name="user_name" value="{{ $data->nama }}" />
+                name="user_name" value="{{ $data->user?->nama }}" />
         </div>
 
 

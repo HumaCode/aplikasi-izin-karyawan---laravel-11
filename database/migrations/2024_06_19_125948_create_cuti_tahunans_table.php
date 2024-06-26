@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('cuti_tahunan', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
+            $table->string('user_name');
             $table->year('tahun');
             $table->integer('total');
             $table->integer('digunakan');
