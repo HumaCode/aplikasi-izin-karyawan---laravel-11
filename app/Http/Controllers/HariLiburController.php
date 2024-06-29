@@ -13,6 +13,22 @@ class HariLiburController extends Controller
      */
     public function index()
     {
+        if (request()->has('start') && request()->has('end')) {
+            $hariLibur = HariLibur::active()->get()->map(function ($item) {
+                return [
+                    'id'                => $item->id,
+                    'title'             => $item->nama,
+                    'start'             => $item->tanggal_awal,
+                    'end'               => $item->tanggal_akhir,
+                    'textColor'         => '#842029',
+                    'backgroundColor'   => '#f8d7da',
+                    'borderColor'       => '#f5c2c7',
+                    'allDay'            => true,
+                ];
+            });
+
+            return response()->json($hariLibur);
+        }
         return view('pages.hari-libur');
     }
 

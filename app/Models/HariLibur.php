@@ -11,4 +11,14 @@ class HariLibur extends Model
 
     protected $table = 'hari_libur';
     protected $guarded = [];
+
+    public function scopeActive($query)
+    {
+        return $query->where(function ($query) {
+            $query = $query->orWhere(function ($query) {
+                $query->whereDate('tanggal_akhir', '>=', request('start'))
+                    ->whereDate('tanggal_awal', '<=', request('end'));
+            });
+        });
+    }
 }

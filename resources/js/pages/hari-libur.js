@@ -35,6 +35,8 @@ let calendar = new Calendar(calendarEl, {
         })
         .execute()
 
-    }
+    },
+
+    events: window.location.origin + `/hari-libur`,
 });
 calendar.render();
