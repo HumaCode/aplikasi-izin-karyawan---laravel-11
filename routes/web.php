@@ -3,6 +3,7 @@
 use App\Http\Controllers\CutiTahunanController;
 use App\Http\Controllers\DivisiController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SetupAplikasiController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // cuti tahunan
     Route::resource('/cuti-tahunan', CutiTahunanController::class);
+
+    // setup aplikasi
+    Route::resource('/setup-aplikasi', SetupAplikasiController::class);
 });
 
 Route::middleware('auth')->group(function () {

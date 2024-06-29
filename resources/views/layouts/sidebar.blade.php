@@ -42,11 +42,11 @@
             </li>
 
             <li @class([
-                'active' => Str::startsWith(request()->path(), 'cuti-tahunan'),
+                'active' => Str::startsWith(request()->path(), 'setup-aplikasi'),
             ])>
-                <a href="{{ url('cuti-tahunan') }}" class="link">
+                <a href="{{ url('setup-aplikasi') }}" class="link">
                     <i class="ti-book"></i>
-                    <span>Cuti Tahunan</span>
+                    <span>Setup Aplikasi</span>
                 </a>
             </li>
 

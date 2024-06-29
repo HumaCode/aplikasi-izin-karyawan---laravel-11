@@ -4,7 +4,9 @@ import 'izitoast/dist/css/izitoast.min.css'
 import 'bootstrap-datepicker'
 import 'bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css'
 import Swal from 'sweetalert2'
-// import 'sweetalert2/src/sweetalert2.scss'
+import select2 from 'select2'
+import 'select2/dist/css/select2.min.css'
+import 'select2-bootstrap-5-theme/dist/select2-bootstrap-5-theme.min.css'
 
 const modalEl = $('#modalAction')
 
@@ -58,6 +60,16 @@ export function confirmation(cb, configs = {})
             icon: "error"
         });
     }});
+}
+
+export function initSelect2(selector = '.select2', options = {}) {
+    select2($)
+    const _select = $(selector) 
+    _select.select2({
+        placeholder: _select.data('placeholder'),
+        theme: 'bootstrap-5',
+        dropdownParent: _select.parents('.modal-content')
+    })
 }
 
 export function initDatepicker(selector = '.date', options = {}) {
