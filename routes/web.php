@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CutiTahunanController;
 use App\Http\Controllers\DivisiController;
+use App\Http\Controllers\HariLiburController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SetupAplikasiController;
 use App\Http\Controllers\UserController;
@@ -29,6 +30,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // setup aplikasi
     Route::resource('/setup-aplikasi', SetupAplikasiController::class)->except(['destroy']);
+
+    // hari libur
+    Route::resource('/hari-libur', HariLiburController::class);
 });
 
 Route::middleware('auth')->group(function () {
