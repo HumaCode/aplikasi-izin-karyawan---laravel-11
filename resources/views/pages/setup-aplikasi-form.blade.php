@@ -15,7 +15,7 @@
                 class="select2">
 
                 @foreach ($hariKerja as $key => $hari)
-                    <option value="{{ $hari }}">{{ $key }}</option>
+                    <option @selected(in_array($hari, $data->hari_kerja ??= [])) value="{{ $hari }}">{{ $key }}</option>
                 @endforeach
 
             </x-forms.select>

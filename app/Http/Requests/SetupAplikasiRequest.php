@@ -2,16 +2,14 @@
 
 namespace App\Http\Requests;
 
+use App\Models\SetupAplikasi;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SetupAplikasiRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
+    public function fillData(SetupAplikasi $setupAplikasi)
     {
-        return false;
+        $setupAplikasi->fill($this->validated());
     }
 
     /**
@@ -22,7 +20,8 @@ class SetupAplikasiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'hari_kerja'    => ['required'],
+            'hmin_cuti'     => ['required', 'integer'],
         ];
     }
 }

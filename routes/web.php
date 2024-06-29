@@ -28,7 +28,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/cuti-tahunan', CutiTahunanController::class);
 
     // setup aplikasi
-    Route::resource('/setup-aplikasi', SetupAplikasiController::class);
+    Route::resource('/setup-aplikasi', SetupAplikasiController::class)->except(['destroy']);
 });
 
 Route::middleware('auth')->group(function () {
