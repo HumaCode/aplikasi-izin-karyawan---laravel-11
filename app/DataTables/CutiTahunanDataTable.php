@@ -23,10 +23,11 @@ class CutiTahunanDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($row) {
-                $action = '<button class="btn btn-success btn-sm action" data-action="' . route('cuti-tahunan.edit', $row->id) . '">Edit</button>';
-                $action .= ' <button class="btn btn-danger btn-sm action-delete" data-method="delete" data-action="' . route('cuti-tahunan.destroy', $row->id) . '">Delete</button>';
 
-                return $action;
+                $actions['Edit']    = ['actions' => route('cuti-tahunan.edit', $row->id)];
+                $actions['Delete']  = ['actions' => route('cuti-tahunan.destroy', $row->id), 'method' => 'delete'];
+
+                return view('action', compact('actions'));
             })
             ->editColumn('created_at', function ($row) {
                 return $row->created_at->format('d-m-Y H:i');

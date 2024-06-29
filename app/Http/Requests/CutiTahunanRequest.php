@@ -26,9 +26,9 @@ class CutiTahunanRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'total'     => ['required'],
-            'tahun'     => ['required'],
-            'user_id'   => ['required'],
+            'total'     => ['required', 'integer'],
+            'tahun'     => ['required', 'integer'],
+            'user_id'   => ['required', 'integer'],
             'user_name' => ['required'],
         ];
     }

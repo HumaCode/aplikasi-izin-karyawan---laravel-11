@@ -3,21 +3,20 @@ import '../vendor/datatable'
 import { AjaxAction, HandleFormSubmit, confirmation, initDatepicker, reloadDatatable, showToast } from '../lib/utils'
 
 
-$('.main-content').on('click', '.action-delete', function(e) {
-    confirmation(res => {
-        (new AjaxAction(this))
-        .onSuccess(res => {
-            showToast(res.status, res.message)
-            reloadDatatable('user-table')
-        }, false).execute();
-    })
-});
+$('.main-content').on('click', '[data-action]', function(e) {
 
-$('.main-content').on('click', '.action', function(e) {
+    if (this.dataset.method == 'delete') {
+        confirmation(res => {
+            (new AjaxAction(this))
+            .onSuccess(res => {
+                showToast(res.status, res.message)
+                reloadDatatable('user-table')
+            }, false)
+            .execute()
+        })
 
-    if (!this.dataset.action) {
-        throw new Error('data attribute action must provide!!')
-    }
+        return
+    };
 
     (new AjaxAction(this))
     .onSuccess(function(res) {
