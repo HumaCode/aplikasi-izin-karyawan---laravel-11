@@ -16,5 +16,11 @@
                 data_value2="{{ convertDate($data->tanggal_akhir, 'd-m-Y') }}" />
         </div>
 
+        @if ($data->id)
+            <div class="col-md-12">
+                <x-forms.switch name="delete" label="Delete..?" />
+            </div>
+        @endif
+
     </div>
 </x-modal>

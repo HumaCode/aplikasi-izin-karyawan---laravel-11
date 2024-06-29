@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\HariLiburRequest;
 use App\Models\HariLibur;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HariLiburController extends Controller
@@ -81,8 +82,17 @@ class HariLiburController extends Controller
      */
     public function update(HariLiburRequest $request, HariLibur $hariLibur)
     {
-        $request->fillData($hariLibur);
-        $hariLibur->save();
+        if ($request->has('delete')) {
+            $hariLibur->delete();
+        } else {
+            if ($request->ref == 'modify') {
+                $request->tanggal_akhir = Carbon::create($request->tanggal_akhir)->subDay()->format('Y-m-d');
+            }
+
+            $request->fillData($hariLibur);
+            $hariLibur->save();
+        }
+
 
         return responseSuccess();
     }
