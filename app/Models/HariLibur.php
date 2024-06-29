@@ -11,6 +11,10 @@ class HariLibur extends Model
 
     protected $table = 'hari_libur';
     protected $guarded = [];
+    protected $casts = [
+        'tanggal_awal' => 'date',
+        'tanggal_akhir' => 'date',
+    ];
 
     public function scopeActive($query)
     {
